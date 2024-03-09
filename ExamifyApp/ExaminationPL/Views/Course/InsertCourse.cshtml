@@ -1,0 +1,72 @@
+﻿@model InsertCourseVM
+@{
+    ViewData["Title"] = "InsertCourse";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+
+<div class="card m-5" style="width:60rem;margin:auto;">
+    <div class="card-body">
+        <form asp-action="InsertCourse" asp-controller="Course">
+
+          
+            <div class="mb-3">
+                <label asp-for="CrsName" class="form-label">Course Name</label>
+                <input type="text" asp-for="CrsName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="CrsName" class="text-danger"></span>
+                <!--3-->
+            </div>
+            <div class="mb-3">
+                <label asp-for="CrsDuration" class="form-label">Duration</label>
+                <input type="text" asp-for="CrsDuration" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="CrsDuration" class="text-danger"></span>
+            </div>
+
+
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4 text-end">
+                    <a onclick="addInput()" class="btn btn-dark p-1  m-2 pull-right">Add Topic <i class="fa-solid fa-plus"></i></a>
+
+                </div>
+            </div>
+            <div id="Topic">
+
+            </div>
+           
+            
+            </script>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </<div> 
+        </div>
+        @section Js {
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            @*             <script src="~/js/validation-styling.js"></script>
+        *@
+        
+            <script>
+                let topicIndex = 0; // Initialize a counter for the topics
+                function addInput() {
+                    var input = document.createElement("input");
+                    input.type = "text";
+                    input.name = `Topics[${topicIndex}].TopicName`; // Ensure the name is correctly indexed
+                    input.className = "form-control";
+                    input.placeholder = "Enter topic name"; // Optional: Add a placeholder
+                    // var CrID = document.createElement("input");
+                    // CrID.type = "Hidden";
+                    // CrID.name = `Topics[${topicIndex}].CrsId`;
+                    var div = document.createElement("div");
+                    div.className = "mb-3"; // Use Bootstrap's margin bottom class for spacing
+                    div.appendChild(input);
+                    // div.appendChild(CrID);
+                    var parentDiv = document.getElementById("Topic");
+                    parentDiv.appendChild(div); // Append the new input div to the parent
+
+                    topicIndex++; // Increment the index for the next topic
+                }
+          </script>
+        }
+

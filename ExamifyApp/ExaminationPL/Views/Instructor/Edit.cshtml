@@ -1,0 +1,58 @@
+﻿@model EditInstractorVM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<div class="card m-5" style="width:60rem;margin:auto;">
+  <div class="card-body">
+<form asp-action="Edit" asp-controller="Instructor">
+  
+     <div class="mb-3">
+   
+    <input type="text"  hidden asp-for="InsId" class="form-control" id="exampleInputEmail1" aria-describedby="">
+    </div>
+   <div class="mb-3">
+    <label asp-for="UserFname"  class="form-label">Frist Name</label>
+    <input type="text"  asp-for="UserFname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="UserFname" class="text-danger"></span>
+            </div>
+    <div class="mb-3">
+    <label asp-for="UserLname"  class="form-label">Last Name</label>
+    <input type="text"  asp-for="UserLname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="UserLname" class="text-danger"></span>
+            </div>
+     <div class="mb-3">
+    <label asp-for="Email"  class="form-label">Email </label>
+    <input type="text"  asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="mb-3">
+    <label asp-for="Password"  class="form-label">Password </label>
+    <input type="text"  asp-for="Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+     <div class="mb-3">
+    <label asp-for="InsDegree"  class="form-label">Degree </label>
+    <input type="text"  asp-for="InsDegree" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <span asp-validation-for="InsDegree" class="text-danger"></span>
+                </div>
+    <div class="mb-3">
+    <label asp-for="InsSalary"  class="form-label">Salary </label>
+    <input type="text"  asp-for="InsSalary" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <span asp-validation-for="InsSalary" class="text-danger"></span>
+                </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</<div>
+
+</div>
+@section Js{
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/js/validation-styling.js"></script>
+
+}

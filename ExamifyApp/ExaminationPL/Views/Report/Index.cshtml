@@ -1,0 +1,204 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+<div class="tickets p-20 bg-white rad-10">
+
+    <div class="d-flex txt-c gap-20 f-wrap">
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">
+                Student Information
+            </span>
+            @* <label for="exampleDataList" class="form-label">Department Name</label>  *@
+
+            
+                <button class="btn dropdown btn-sm btn-icon btn-dark  btn-active--primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                           Select Department
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach (var Dept in ViewBag.AllDepartment)
+                    {
+      
+                        <li><a class="dropdown-item" asp-action="StudentInformation" asp-controller="Report" asp-route-id="@Dept.DeptId">@Dept.DeptName</a></li>
+                    }
+                   
+                 </ul>
+            
+
+
+        </div>
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">Exam Questions</span>
+            @* <label for="exampleDataList" class="form-label">Department Name</label>  *@
+
+
+            <button class="btn dropdown btn-sm btn-icon btn-dark  btn-active--primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Exam 
+
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach (var exam in ViewBag.AllExam)
+                {
+
+                    <li><a class="dropdown-item" asp-action="ExamQuestions" asp-controller="Report" asp-route-id="@exam.ExId">@exam.ExName</a></li>
+                }
+
+            </ul>
+
+
+
+        </div>
+
+        
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">
+                Instructor Courses
+            </span>
+            @* <label for="exampleDataList" class="form-label">Department Name</label>  *@
+
+
+            <button class="btn dropdown btn-sm btn-icon btn-dark  btn-active--primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Instractor
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach (var inst in ViewBag.AllInstractor)
+                {
+
+                    <li><a class="dropdown-item" asp-action="StudentCourses" asp-controller="Report" asp-route-id="@inst.InsId">@inst.UserFname @inst.UserLname </a></li>
+                }
+
+            </ul>
+
+
+
+        </div>
+        
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">
+                Student Grades
+            </span>
+            @* <label for="exampleDataList" class="form-label">Department Name</label>  *@
+
+
+            <button class="btn dropdown btn-sm btn-icon btn-dark  btn-active--primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Student
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach (var student in ViewBag.AllStudent)
+                {
+
+                    <li><a class="dropdown-item" asp-action="StudentGrade" asp-controller="Report" asp-route-id="@student.StId">@student.UserFname @student.UserLname </a></li>
+                }
+
+            </ul>
+
+
+
+        </div>
+
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">
+                Course Topics
+            </span>
+            @* <label for="exampleDataList" class="form-label">Department Name</label>  *@
+
+
+            <button class="btn dropdown btn-sm btn-icon btn-dark  btn-active--primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Course
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach (var course in ViewBag.AllCourse)
+                {
+
+                    <li><a class="dropdown-item" asp-action="CourseTopic" asp-controller="Report" asp-route-id="@course.CrsId">@course.CrsName </a></li>
+                }
+
+            </ul>
+
+
+
+        </div>
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-regular fa-rectangle-list fa-2x mb-10 c-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5">
+                Student Answer
+            </span>
+            @* <label for="exampleDataList" class="form-label">Department Name</label>  *@
+
+
+            <button class="btn dropdown btn-sm btn-icon btn-dark  btn-active--primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Student
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach (var student in ViewBag.AllStudent)
+                {
+
+                    <li><a class="dropdown-item" asp-action="ExamStudentAnswerCiew" asp-controller="Report" asp-route-id="@student.StId">@student.UserFname @student.UserLname </a></li>
+                }
+
+            </ul>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Uncomment the download PDF button -->
+@* <Center><button id="download-pdf">Download</button></Center>
+
+@section JS {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#download-pdf').click(function () {
+                // Hide download button before capturing content
+                $(this).hide();
+
+                var element = document.getElementById("invoice-page");
+                html2canvas(element).then(function (canvas) {
+                    var pdf = new jsPDF();
+                    // Calculate the aspect ratio of the canvas
+                    var aspectRatio = canvas.width / canvas.height;
+                    // Set the width and height of the image in the PDF
+                    var width = 200; // Set the desired width of the image in mm
+                    var height = width / aspectRatio;
+                    // Add the image to the PDF with adjusted dimensions
+                    pdf.addImage(canvas.toDataURL("image/jpeg"), "png", 0, 0, width, height);
+                    var currentdate = new Date();
+                    var datetime = currentdate.getDate() + "-"
+                        + (currentdate.getMonth() + 1) + "-"
+                        + currentdate.getFullYear();
+                    pdf.save(`invoice-${datetime}.pdf`);
+
+                    // Show download button again after capturing content
+                    $('#download-pdf').show();
+                });
+            });
+        });
+
+    </script>
+} *@
+
+@* @section JS {
+    <script>
+        function redirectToStudentInformation() {
+            // Get the selected option value
+            var selectedOption = document.getElementById("exampleDataList").value;
+
+            // Construct the URL based on the selected option value
+            var url = '/Report/StudentInformation?id=' + selectedOption;
+
+            // Redirect to the URL
+            window.location.href = url;
+        }
+    </script>
+} *@

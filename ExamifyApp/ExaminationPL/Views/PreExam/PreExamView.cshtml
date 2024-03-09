@@ -1,0 +1,132 @@
+﻿@using ExaminationDAL.Entities;
+@using Microsoft.AspNetCore.Mvc.TagHelpers;
+
+@model ExaminationDAL.Entities.Exam
+
+@{
+    ViewData["Title"] = "PreExamView";
+    Layout = null;
+}
+
+@{
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Exam Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #0a1323;
+            color: #fff;
+            border-radius: 15px 15px 0 0;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #fff;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .exam-info {
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+            margin-right: 10px;
+            min-width: 150px;
+        }
+
+        .value {
+            color: #333;
+        }
+
+        .btn-start-exam {
+            padding: 10px 30px;
+            background-color: #0a1323;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+            .btn-start-exam:hover {
+                background-color: #333;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Exam Information</h1>
+            </div>
+            <div class="card-body">
+                <div class="exam-info">
+
+                    <div class="info-row">
+                        <span class="label">Exam:</span>
+                        <span class="value">@Model.ExName</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Exam Duration:</span>
+                        <span class="value">1 hours</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Date:</span>
+                        <span class="value" id="current-date"></span>
+                    </div>
+                </div>
+              
+
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript to get and display current date
+        const currentDateElement = document.getElementById('current-date');
+        const currentDate = new Date().toLocaleDateString('en-US');
+        currentDateElement.textContent = currentDate;
+    </script>
+</body>
+</html>
+
+
+
+

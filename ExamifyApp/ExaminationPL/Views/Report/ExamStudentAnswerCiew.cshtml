@@ -1,0 +1,60 @@
+﻿@model List<Exam>
+@{
+    ViewData["Title"] = "ExamStudentAnswerCiew";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+@section CSS {
+    <style>
+        #print-button {
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 5px;
+        }
+    </style>
+
+}
+
+<div class="card m-2" style="width:60rem;margin:auto;">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed  table-row-gray-300" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">Exam ID</th>
+                        <th class="text-center">Exam Name</th>
+                        <th class="text-center">Student Degree</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.ExId</td>
+                            <td class="text-center">@item.ExName</td>
+                            <td class="text-center">@item.ExFinalGrade</td>
+
+                            <td><a id="print-button" asp-action="ExamStudentAnswer" asp-controller="Report" asp-route-stid="@item.StId" asp-route-id="@item.ExId">Show</a></td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}

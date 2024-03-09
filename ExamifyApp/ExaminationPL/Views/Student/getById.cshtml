@@ -1,0 +1,70 @@
+﻿@model GetStudentByIdVM
+@{
+    ViewData["Title"] = "getById";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+ <div class="profile-page m-20">
+ <!-- Start Overview -->
+          <div class="overview bg-white rad-10 d-flex align-center">
+            <div class="avatar-box txt-c p-20">
+            <img class="rad-half mb-10" src="~/StudentsImages/@Model.StImg" alt="" />
+              <h3 class="m-0">@Model.UserFname  @Model.UserLname</h3>
+              <p class="c-grey mt-10">@Model.Email</p>
+              
+             
+              
+            </div>
+            <div class="info-box w-full txt-c-mobile">
+              <!-- Start Information Row -->
+              <div class="box p-20 d-flex align-center">
+                <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
+                <div class="fs-14">
+                  <span class="c-grey">Full Name</span>
+                  <span>@Model.UserFname  @Model.UserLname</span>
+                </div>
+                
+                <div class="fs-14">
+                  <span class="c-grey">Adress:</span>
+                  <span>@Model.StAddress</span>
+                </div>
+              
+              </div>
+              <!-- End Information Row -->
+              <!-- Start Information Row -->
+              <div class="box p-20 d-flex align-center">
+                <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
+                <div class="fs-14">
+                  <span class="c-grey">Email:</span>
+                  <span>@Model.Email</span>
+                </div>
+                <div class="fs-14">
+                  <span class="c-grey">User Name:</span>
+                  <span>@Model.UserName</span>
+                </div>
+                <div class="fs-14">
+                  <span class="c-grey">Department Name</span>
+                  <span>@Model.Dept.DeptName</span>
+                </div>
+              </div>
+              <!-- End Information Row -->
+              <!-- Start Information Row -->
+              <div class="box p-20 d-flex align-center">
+                <div class="fs-14">
+                  <span class="c-grey">Courses</span>
+                   <ul class="m-0 txt-c-mobile">
+                   <li>
+                    @foreach (var item in @Model.courses)
+                    {
+                        <a class="btn btn-secondary m-3" >@item.CrsName</a>
+                    }
+                    </li>
+                    </ul>
+                </div>
+               
+              </div>
+              <!-- End Information Row -->
+             
+            </div>
+          </div>
+          <!-- End Overview -->
+          </div>

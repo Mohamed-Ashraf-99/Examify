@@ -1,0 +1,98 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "ITI_ExamsContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": "Entities",
+   "OutputContextPath": "Context",
+   "OutputPath": "Entities",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Examination.DAL",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Course]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Department]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Exam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Includes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Instructor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Multiple_choices]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Question]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Role]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Student]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Studies]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Teaches]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Topic]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Users]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Works_in]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "desktop-9s78oi0.ITI_Exams.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": true,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

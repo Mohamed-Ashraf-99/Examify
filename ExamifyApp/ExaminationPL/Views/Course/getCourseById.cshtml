@@ -1,0 +1,85 @@
+﻿@using ExaminationBLL.ModelVM.CourseVM
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model GetCourseByIdVM
+
+
+
+<div class="card m-5" style="width:60rem;margin:auto;">
+
+    <div class="card-body">
+        <div class="mb-3">
+            <label asp-for="CrsName" class="form-label">Course Name</label>
+            <input disabled type="text" asp-for="CrsName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+        <div class="mb-3">
+            <label asp-for="CrsId" class="form-label">Course Id</label>
+            <input disabled type="text" asp-for="CrsId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label asp-for="CrsDuration" class="form-label">Course Duration</label>
+            <input disabled type="text" asp-for="CrsDuration" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed table-row-gray-300 gy-7" style="Width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Degree</th>
+                       
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Ins)
+                    {
+                        <tr>
+                            <td>@item.InsId</td>
+                            <td>@item.Ins.UserFname</td>
+                            <td>@item.Ins.UserLname</td>
+                            <td>@item.Ins.UserName</td>
+                            <td>@item.InsDegree</td>
+                            <td class="dropdown">
+
+                                <button class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-sharp fa-solid fa-bars"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-action="GetInstructorById" asp-controller="Instructor" asp-route-id="@item.InsId">Select</a></li>
+                                    <li><a class="dropdown-item" asp-action="Edit" asp-controller="Instructor" asp-route-id="@item.InsId">Edit</a></li>
+                                    <li><a class="dropdown-item" asp-action="DeleteInstructorByID" asp-controller="Instructor" asp-route-id="@item.InsId">Delete</a></li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+       
+            <ul class="m-0 txt-c-mobile">
+                <li>
+                    @foreach (var item in @Model.Topics)
+                    {
+                        <a class="btn btn-dark m-3">@item.TopicName</a>
+                    }
+                </li>
+            </ul>
+       
+    </div>
+</div>
+@section JS {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}

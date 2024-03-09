@@ -1,0 +1,54 @@
+﻿@using ExaminationDAL.ModelVM.ReportVM
+
+@model List<StudentInfoDTO>
+@{
+    ViewData["Title"] = "StudentInformation";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="card m-2" style="width:60rem;margin:auto;">
+    
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed  table-row-gray-300" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.St_id</td>
+                            <td>@item.UserName</td>
+                            <td>@item.UserFname</td>
+                            <td>@item.UserLname</td>
+                            <td>@item.EmailAddress</td>
+
+                            <td>@item.Address</td>
+
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}

@@ -1,0 +1,43 @@
+﻿@model Exam
+
+@{
+    Layout = "Student/_Layout";
+    var includes = Model.Includes.ToList();
+    var radioBtnGroup = "question";
+}
+
+<form method="post" asp-action="Index" asp-route-id="@Model.ExId">
+    @for (var i = 0; i < Model.Includes.Count; i++)
+    {
+        radioBtnGroup = $"{radioBtnGroup}{i}";
+
+        var qsNum = i + 1;
+        <div class="question shadow bg-white rounded">
+            <p class="qs-number">Question @qsNum</p>
+            <p class="qs-title">@includes[i].Qs.QsTitle</p>
+            <div class="dpx">
+                <div class="py">
+                    @{
+                        var choices = includes[i].Qs.MultipleChoices.ToList();
+                    }
+                    @foreach (var choice in choices)
+                    {
+                        <label>
+                            <input asp-for="@Model.Includes.ToList()[i].StAnswer"
+                                   type="radio"
+                                   class="option-input radio"
+                                   name="Includes[@i].StAnswer"
+                                   value="@choice.ChId"/>
+                            @choice.ChTitle
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="finish d-grid">
+        <input type="submit" value="Submit" class="btn btn-dark btn-lg"/>
+        <input asp-for="ExId" type="hidden"/>
+    </div>
+</form>

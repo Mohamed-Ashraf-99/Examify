@@ -1,0 +1,61 @@
+﻿@model List<GetAllExamVM>
+@{
+    ViewData["Title"] = "getAll";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+
+<div class="card m-5" style="width:60rem;margin:auto;">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed table-row-gray-300 gy-7" style="Width:100%">
+                <thead>
+        <tr>
+            <th>Exam ID</th>
+            <th>Exam Name</th>
+            <th>Final Grade</th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.ExId</td>
+                <td>@item.ExName</td>
+                <td>@item.ExFinalGrade</td>
+              
+                        
+               
+                <td class="dropdown">
+
+                    <button class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                         <i class="fa-sharp fa-solid fa-bars"></i>
+                      </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-action="getExamById" asp-controller="Exam" asp-route-id="@item.ExId">Select</a></li>
+
+                                    <li><a class="dropdown-item" asp-action="DeleteExam" asp-controller="Exam" asp-route-id="@item.ExId">Delete</a></li>
+                                </ul>
+
+                            </td>
+            </tr>
+       }
+     
+       
+    </tbody>
+</table>
+        </div>
+    </div>
+</div>
+@section JS{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}
+

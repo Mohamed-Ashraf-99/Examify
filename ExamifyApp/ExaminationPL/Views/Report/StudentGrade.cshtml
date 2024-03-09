@@ -1,0 +1,48 @@
+﻿@using ExaminationBLL.ModelVM.ReportVM
+@model List<st_getStudentGradesInAllCoursesDTO>
+@{
+    ViewData["Title"] = "StudentGrade";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="card m-2" style="width:60rem;margin:auto;">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed  table-row-gray-300" style="width:100%">
+                <thead>
+                    <tr>
+                        
+                        <th>Full Name</th>
+                        <th>Finall Grade</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.FinallGrad</td>
+                           
+
+                           
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}

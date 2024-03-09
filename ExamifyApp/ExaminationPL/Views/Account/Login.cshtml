@@ -1,0 +1,90 @@
+﻿@using ExaminationBLL.ModelVM.Authentication
+@{
+    Layout = null;
+}
+@model LoginVM
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="content">
+        <div class=" divCont">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/ImageLogin/Online test-bro.png" alt="Image" class="img-fluid" style="margin-top:-20px">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="logo">
+                                <img  src="~/ImageLogin/makeblack.png" style="width:250px"  alt="Image" >
+                                
+                            </div>
+
+                            <form method="post" asp-controller="Account" asp-action="Login">
+
+
+                                <div class="form-group first">
+                                    <input type="text" class="form-control" id="username" asp-for="UserName" placeholder="User Name">
+                                </div>
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+
+                                <div class="form-group last mb-4">
+                                    <input type="password" class="form-control" id="password" asp-for="Password" placeholder="Password" minlength="6">
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                                <br />
+                                <div class="d-flex mb-5 align-items-center">
+                                    <label class="control control--checkbox mb-0">
+                                        <span class="caption">Remember Me!</span>
+                                        <input type="checkbox" checked="checked" asp-for="RememberMe" />
+
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </div>
+
+                                <input type="submit" value="Login" class="btn-darkLog">
+
+
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/validation-styling.js"></script>
+</body>
+</html>

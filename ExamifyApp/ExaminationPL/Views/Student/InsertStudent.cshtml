@@ -1,0 +1,62 @@
+﻿@model InsertStudentVM
+@{
+    ViewData["Title"] = "InsertStudent";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+
+<div class="card m-5" style="width:60rem;margin:auto;">
+    <div class="card-body">
+        <form asp-action="InsertStudent" asp-controller="Student" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label">User Name</label>
+                <input type="text" asp-for="UserName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserFname" class="form-label">Frist Name</label>
+                <input type="text" asp-for="UserFname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="UserFname" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserLname" class="form-label">Last Name</label>
+                <input type="text" asp-for="UserLname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="UserLname" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="EmailAddress" class="form-label">Email </label>
+                <input type="text" asp-for="EmailAddress" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password </label>
+                    <input type="password" asp-for="Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeptId" class="control-label">Department</label>
+                    <select asp-for="DeptId" class="form-control" asp-items="ViewBag.Department"></select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="StAddress" class="form-label">Degree </label>
+                    <input type="text" asp-for="StAddress" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <span asp-validation-for="StAddress" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+
+
+                    <div class="mb-3">
+                        <label asp-for="Image" class="form-label">UploadImage</label>
+                        <input class="form-control form-control-lg" id="formFileLg" asp-for="Image" type="file">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </<div>
+        </div>
+        @section Js {
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/js/validation-styling.js"></script>
+        }

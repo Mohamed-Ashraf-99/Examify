@@ -1,0 +1,57 @@
+﻿@model ExaminationBLL.ModelVM.StudentResultVM
+@{
+  
+    Layout =null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finall Degree</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/AdminDashBoard/css/all.min.css" />
+    <link rel="stylesheet" href="~/AdminDashBoard/css/framework.css" />
+    <link rel="stylesheet" href="~/AdminDashBoard/css/master.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .tickets {
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-8">
+                <div class="tickets bg-white rad-40">
+                    <div class=" mx-auto txt-c  ">
+                        <div style="400px" class="box p-4 rad-10 fs-13 c-grey">
+                            <h1 class="mt-0 mb-10 "> Well done!</h1>
+                            <p class="mt-0 mb-20 c-grey fs-15">Congratulations <span class="c-dark font-weight-bold">@Model.student.St.UserFname @Model.student.St.UserLname</span> on completing your exam!</p>
+
+                            <i class="fa-solid fa-handshake-simple fa-2x mb-10 c-dark"></i>
+                            <br />
+
+                            Your Degree
+                            <span class="d-block c-black fw-bold fs-25 mb-5">@Model.FinallDegree</span>
+                            <a class="text-white btn btn-dark w-25" asp-action="" asp-controller="">Ok</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

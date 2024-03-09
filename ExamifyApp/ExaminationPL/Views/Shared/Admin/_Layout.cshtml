@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Examify</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/AdminDashBoard/css/all.min.css" />
+    <link rel="stylesheet" href="~/AdminDashBoard/css/framework.css" />
+    <link rel="stylesheet" href="~/AdminDashBoard/css/master.css" />
+    @RenderSection("CSS", required: false)
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
+    <style>
+        .active1 {
+            background: black;
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <div class="page d-flex">
+        <!-- Start Navbar -->
+        <partial name="~/Views/Shared/Admin/_Sidebar.cshtml" />
+        <!-- End Navbar -->
+        <div class="content w-full">
+            <!-- Start Navbar -->
+            <partial name="~/Views/Shared/Admin/_Navbar.cshtml" />
+            <!-- End Navbar -->
+            <div class="profile-page m-20">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.0/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.print.min.js"></script>
+
+
+    @RenderSection("JS", required: false)
+</body>
+</html>

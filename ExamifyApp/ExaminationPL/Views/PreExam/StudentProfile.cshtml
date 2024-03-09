@@ -1,0 +1,177 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ExaminationDAL.Entities.Student
+@{
+    ViewData["Title"] = "StudentProfile";
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+@*     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+ *@    <!-- Font Awesome -->
+    @* <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"> *@
+
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding: 30px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .user-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary, .btn-outline-primary {
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .breadcrumb-item.active {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+
+                <br/>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="~/StudentsImages/@Model.StImg" alt="User Avatar" class="user-avatar">
+                    <h4>@Model.St.UserFname @Model.St.UserLname</h4>
+                    <p class="text-secondary">Full Stack Developer</p>
+                    @* <a asp-controller="PreExam" asp-action="PreExamView" class="btn btn-primary">Exam Page</a> *@
+                    <br/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">@Model.St.UserFname @Model.St.UserLname</div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">@Model.St.EmailAddress</div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">City</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">@Model.StAddress</div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Department</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">@Model.Dept.DeptName</div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Number Of Courses</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">@Model.Crs.Count</div>
+                    </div>
+                    <hr>
+
+
+                        <div class="dropdown">
+                               
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Choice Exam
+                            </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @foreach (var exam in ViewBag.Exams)
+                                    {
+                                        <li>
+                                        <a class="dropdown-item" asp-controller="CurrentExam" asp-action="Index" asp-route-id="@exam.ExId">@exam.ExName</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@* <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> *@
+@* <script src="https://cdn.jsdelivr.net/npm/popperjs/core@1.16.1/dist/umd/popper.min.js"></script> *@
+@* <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
+</body>
+
+
+@* <div class="container">
+    <h1>User Profile</h1>
+    <div class="overview">
+        <div class="avatar-box">
+            <img class="avatar" src="~/StudentsImages/@Model.StImg" alt="User Avatar" />
+            <h3>@Model.St.UserFname @Model.St.UserLname</h3>
+        </div>
+        <div class="info-box">
+            <div class="box">
+                <h4>General Information</h4>
+                <p><strong>Full Name:</strong> @Model.St.UserFname @Model.St.UserLname</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Country:</strong> @Model.StAddress</p>
+            </div>
+            <div class="box">
+                <h4>Personal Information</h4>
+                <p><strong>Email:</strong> @Model.St.EmailAddress</p>
+            </div>
+            <div class="box">
+                <h4>Job Information</h4>
+                <p><strong>Title:</strong> Full Stack Developer</p>
+                <p><strong>Programming Language:</strong> C#</p>
+                <p><strong>Years Of Experience:</strong> 1+</p>
+            </div>
+        </div>
+    </div>
+</div> *@
+<!-- End Overview -->

@@ -1,0 +1,87 @@
+﻿@model GenerateExam
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+
+<div class="card m-5" style="width:65rem;margin:auto;">
+    <div class="card-body">
+        <form method="post" asp-action="Index" asp-controller="GenerateExam" class="form-group">
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-4 text-end">
+                    <button type="submit" class="btn btn-outline-dark p-1 m-2 pull-right">Generate Exam</button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <input type="hidden" asp-for="CourseID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-4">
+                <label asp-for="trueOrFalseCounnt" class="form-label">Number of True or false Questions</label>
+                <input type="text" asp-for="trueOrFalseCounnt" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="trueOrFalseCounnt" class="text-danger"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="otherQuestionCount" class="form-label">Number of Other Questions</label>
+                <input type="text" asp-for="otherQuestionCount" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span asp-validation-for="otherQuestionCount" class="text-danger"></span>
+            </div>
+            <div class="card m-4" style="width:60rem;margin:auto;">
+                <div class="row">
+                    <div class="col-8">
+                    </div>
+                    <div class="col-4 text-end">
+                        <button type="button" id="checkAllBtn" class="btn btn-dark p-1  m-2 pull-right">Check All</button>
+                         
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                <table id="myTable" class="table table-row-dashed table-row-gray-300 gy-7" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Check</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.StId.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    <label asp-for="@Model.StId[i].StName">@Model.StId[i].StName</label>
+                                    <input type="hidden" asp-for="@Model.StId[i].StID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="hidden" asp-for="@Model.StId[i].StName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.StId[i].IsSelected" type="checkbox" class="filled-in">
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                </div>
+               </div>
+               </div>
+        </form>
+    </div>
+</div>
+
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+
+            // Check All button functionality
+            $('#checkAllBtn').click(function () {
+                $('input[type="checkbox"]').prop('checked', true);
+            });
+        });
+
+    </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/validation-styling.js"></script>
+
+}

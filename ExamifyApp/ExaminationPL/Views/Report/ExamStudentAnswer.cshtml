@@ -1,0 +1,97 @@
+﻿@using ExaminationBLL.ModelVM.ReportVM
+
+@model List<st_showExamWithStudentAnswersDTO>
+
+@{
+    ViewData["Title"] = "ExamStudentAnswer";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+    var radioBtnGroup = "question";
+    int i = 0;
+}
+
+@section CSS {
+    <link href="~/student/css/styles.css" rel="stylesheet" />
+    <style>
+        @@media print {
+            .hide-on-print {
+                display: none;
+            }
+
+            #print-button {
+                display: none;
+            }
+        }
+
+        #print-button {
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding:10px 15px;
+        }
+
+        #print-button h3{
+            margin-bottom:0;
+        }
+    </style>
+
+}
+
+@foreach (var item in Model)
+{
+    radioBtnGroup = $"{radioBtnGroup}{i}";
+
+    var qsNum = i + 1;
+    <div class="question shadow bg-white rounded">
+        <p class="qs-number">Question @qsNum</p>
+        <p class="qs-title">@item.qs_title</p>
+        <div class="dpx">
+            <div class="py">
+
+                @if (item.Student_Answer==item.ModelAnswer)
+                {
+                    <label class="c-green">Your Answer :@item.Student_Answer</label>
+                   
+
+                }
+                else
+                {
+                    <label class="c-red">Your Answer :@item.Student_Answer</label>
+                }
+                <label>Answer Model :@item.ModelAnswer</label>
+            </div>
+        </div>
+    </div>
+
+}
+   
+
+
+<center><button id="print-button"><h3>Print</h3></button></center>
+
+
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+
+        });
+    </script>
+    <script>
+        const Print = document.getElementById('print-button');
+        const PrintPage = () => {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.add('hide-on-print'); // Add class to hide sidebar when printing
+
+            window.print(); // Trigger printing
+
+            sidebar.classList.remove('hide-on-print'); // Remove class after printing is done
+        };
+
+        Print.addEventListener('click', () => {
+            PrintPage();
+        });
+    </script>
+
+
+}

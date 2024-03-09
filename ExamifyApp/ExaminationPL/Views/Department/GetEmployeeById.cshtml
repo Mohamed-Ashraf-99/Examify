@@ -1,0 +1,68 @@
+﻿@using ExaminationBLL.ModelVM.DepartmentModelVM
+
+@model DepartmentVM 
+
+@{
+    ViewData["Title"] = "DisplayDepartments";
+    // Layout = "~/Views/Shared/Admin/_Layout";
+    Layout = "Admin/_Layout";
+}
+
+<div class="profile-page m-20">
+    <!-- Start Overview -->
+    <div class="overview bg-white rad-10 d-flex align-center">
+        <div class="avatar-box txt-c p-20">
+            <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
+            <h3 class="m-0">@Model.DeptName</h3>
+            <p class="c-grey mt-10">@Model.DeptId</p>
+
+
+
+        </div>
+        <div class="info-box w-full txt-c-mobile">
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+                <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
+                <div class="fs-14">
+                    <span class="c-grey">Department Name:</span>
+                    <span>@Model.DeptName</span>
+                </div>
+
+                <div class="fs-14">
+                    <span class="c-grey">Department ID:</span>
+                    <span>@Model.DeptId </span>
+                </div>
+
+                <div class="fs-14">
+                    <span class="c-grey">Department Description:</span>
+                    <span>@Model.DeptDesc</span>
+                </div>
+
+                <div class="fs-14">
+                    <span class="c-grey">Department Location:</span>
+                    <span>@Model.DeptLocation </span>
+                </div>
+
+                 <div class="fs-14">
+                    <span class="c-grey">Department Manager ID:</span>
+                    <span>@Model.DeptMgrId </span>
+                </div>
+
+                <div class="fs-14">
+                    <span class="c-grey">Number of Students:</span>
+                    <span>@Model.NumberOfStudents</span>
+                </div>
+                
+                <div class="fs-14">
+                    <span class="c-grey">Number of Instructors:</span>
+                    <span>@Model.NumberOfInstructors</span>
+                </div>
+
+            </div>
+   
+
+        </div>
+    </div>
+    <!-- End Overview -->
+</div>
+

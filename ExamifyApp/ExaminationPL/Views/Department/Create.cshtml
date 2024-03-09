@@ -1,0 +1,76 @@
+﻿@using ExaminationBLL.ModelVM.DepartmentModelVM
+
+@model DepartmentVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+<div class="card m-5" style="width:60rem;margin:auto;">
+    <h1>Add Department</h1>
+    <div class="card-body">
+        @* <form asp-action="" asp-controller="" enctype="multipart/form-data"> *@
+        <form method="post" asp-action="Create">
+
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label asp-for="DeptName" class="form-label">Department Name</label>
+                    <input type="text" asp-for="DeptName" class="form-control" id="DepartmentName" maxlength="50">
+                    <span asp-validation-for="DeptName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DeptDesc" class="form-label">Department Description</label>
+                <input type="text" asp-for="DeptDesc" class="form-control" id="DeptDesc" aria-describedby="">
+                <span asp-validation-for="DeptDesc" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DeptLocation" class="form-label">Department Location</label>
+                <input type="text" asp-for="DeptLocation" class="form-control" id="DeptLocation" aria-describedby="">
+                <span asp-validation-for="DeptLocation" class="text-danger"></span>
+            </div>
+
+
+            <div class="mb-3">
+                <label asp-for="DeptMgrId" class="form-label">Department Manager</label>
+                <select asp-for="DeptMgrId" class="form-control" id="DeptMgrId" aria-describedby="">
+                    <option value=""></option>
+                    @foreach (var instructor in Model.Instructors)
+                    {
+                        <option value="@instructor.InsId">@instructor.Ins.UserName</option>
+                    }
+                </select>
+                <span asp-validation-for="DeptMgrId" class="text-danger"></span>
+            </div>
+
+            @*   <div class="mb-3">
+            <label asp-for="DeptMgrId" class="form-label">Manager ID </label>
+            <select asp-for="DeptMgrId" class="form-control" asp-items="@(new SelectList(Model.Instructors, "InsId", "UserName"))" id="DeptMgrId" aria-describedby="">
+            <option></option>
+            </select>
+            <span asp-validation-for="Instructors" class="text-danger"></span>
+            </div>  *@
+
+            <div class="mb-3">
+                <label asp-for="MgrHireDate" class="form-label">Manager Hire Date </label>
+                <input type="date" asp-for="MgrHireDate" class="form-control" id="MgrHireDate" aria-describedby="">
+                <span asp-validation-for="MgrHireDate" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+               
+            </div>
+
+        </form>
+        </<div>
+        </div>
+
+        @section JS {
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+            <script src="~/js/validation-styling.js"></script>
+
+        }
+

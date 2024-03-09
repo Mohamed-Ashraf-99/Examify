@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 30px 0;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.user-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.btn-primary, .btn-outline-primary {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.breadcrumb-item.active {
+    font-weight: bold;
+}

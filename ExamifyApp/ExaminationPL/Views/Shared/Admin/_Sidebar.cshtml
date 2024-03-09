@@ -1,0 +1,42 @@
+﻿<div class="sidebar bg-white p-20 p-relative">
+    <h3 class="p-relative txt-c mt-0">Examify</h3>
+    <ul>
+        <li>
+            <a active-when="Student" class=" d-flex align-center fs-14 c-black rad-6 p-10 " asp-action="getAll" asp-controller="Student">
+                <i class="fa-sharp fa-solid fa-person"></i>
+                <span>Students</span>
+            </a>
+        </li>
+        <li>
+            <a active-when="Instructor" class="d-flex align-center fs-14 c-black rad-6 p-10 " asp-action="getAll" asp-controller="Instructor">
+                <i class="fa-sharp fa-solid fa-person-chalkboard"></i>
+                <span>Instructors</span>
+            </a>
+        </li>
+        <li>
+            <a active-when="Course" class="d-flex align-center fs-14 c-black rad-6 p-10" asp-action="getAll" asp-controller="Course">
+                <i class="fa-sharp fa-solid fa-bars-progress"></i>
+                <span>Course</span>
+            </a>
+        </li>
+        <li>
+            <a active-when="Exam" class="d-flex align-center fs-14 c-black rad-6 p-10" asp-action="getAll" asp-controller="Exam">
+                <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                <span>Exam</span>
+            </a>
+        </li>
+        <li>
+            <a active-when="Department" class="d-flex align-center fs-14 c-black rad-6 p-10" asp-action="DisplayDepartments" asp-controller="Department">
+                <i class="fa-solid fa-building"></i>
+                <span>Department</span>
+            </a>
+        </li>
+        <li>
+            <a active-when="Report" class="d-flex align-center fs-14 c-black rad-6 p-10" asp-action="Index" asp-controller="Report">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+                <span>Report</span>
+            </a>
+        </li>
+
+    </ul>
+</div>

@@ -1,0 +1,90 @@
+﻿@model Exam
+@{
+    ViewData["Title"] = "ExamQuestions";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+    var includes = Model.Includes.ToList();
+    var radioBtnGroup = "question";
+}
+@section CSS{
+    <link href="~/student/css/styles.css" rel="stylesheet" />
+    <style>
+        @@media print {
+    .hide-on-print {
+        display: none;
+    }
+
+            #print-button {
+                display: none; 
+            }
+}
+
+        #print-button{
+         background-color: black;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 30px;
+        }
+    </style>
+
+}
+
+
+                @for (var i = 0; i < Model.Includes.Count; i++)
+                {
+                    radioBtnGroup = $"{radioBtnGroup}{i}";
+
+                    var qsNum = i + 1;
+               <div class="question shadow bg-white rounded">
+                <p class="qs-number">Question @qsNum</p>
+                <p class="qs-title">@includes[i].Qs.QsTitle</p>
+                <div class="dpx">
+                    <div class="py">
+                                @{
+                                    var choices = includes[i].Qs.MultipleChoices.ToList();
+                                }
+                                @foreach (var choice in choices)
+                                {
+                            <label>
+                                <input asp-for="@Model.Includes.ToList()[i].StAnswer"
+                                       type="radio"
+                                       class="option-input radio"
+                                       name="Includes[@i].StAnswer"
+                                       value="@choice.ChId" />
+                                        @choice.ChTitle
+                            </label>
+                                }
+                    </div>
+                </div>
+            </div>
+                }
+
+
+<center><button id="print-button"><h3>Print</h3></button></center>
+
+  
+@section Js {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+           
+        });
+    </script>
+    <script>
+        const Print = document.getElementById('print-button');
+        const PrintPage = () => {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.add('hide-on-print'); // Add class to hide sidebar when printing
+
+            window.print(); // Trigger printing
+
+            sidebar.classList.remove('hide-on-print'); // Remove class after printing is done
+        };
+
+        Print.addEventListener('click', () => {
+            PrintPage();
+        });
+    </script>
+  
+
+}

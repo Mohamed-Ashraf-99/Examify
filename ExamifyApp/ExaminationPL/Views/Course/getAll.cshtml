@@ -1,0 +1,82 @@
+﻿@model List<GetAllCoursesVM>
+@{
+    ViewData["Title"] = "getAll";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
+}
+<div class="card m-2" style="width:60rem;margin:auto;">
+    <div class="row">
+        <div class="col-8">
+        </div>
+        <div class="col-4 text-end">
+            <a class="btn btn-outline-dark p-1  m-2 pull-right" asp-controller="Course" asp-action="InsertCourse"> <i class="fa-regular fa-address-card"></i> </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-row-dashed table-row-gray-300 gy-7" style="Width:100%">
+                <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Course Duration1</th>
+            <th>Course Instractur</th>
+            <th>Course Topic</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.CrsId</td>
+                <td>@item.CrsName</td>
+                <td>@item.CrsDuration</td>
+                <td>
+                    @foreach (var ins in @item.Ins)
+                    {
+                        <a class="btn btn-light">@ins.Ins.UserFname @ins.Ins.UserLname</a>
+                    }
+                </td>
+                        
+                <td>
+                    @foreach (var topic in @item.Topics)
+                    {
+                       <a class="btn btn-light">@topic.TopicName</a>
+                    }
+                    </td>
+                            <td class="dropdown">
+
+                                <button class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-sharp fa-solid fa-bars"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-action="Index" asp-controller="GenerateExam" asp-route-id="@item.CrsId">GenerateExam</a></li>
+
+                                    <li><a class="dropdown-item" asp-action="getCourseById" asp-controller="Course" asp-route-id="@item.CrsId">Select</a></li>
+                                    <li><a class="dropdown-item" asp-action="EditCourse" asp-controller="Course" asp-route-id="@item.CrsId">Edit</a></li>
+                                    <li><a class="dropdown-item" asp-action="DeleteCourse" asp-controller="Course" asp-route-id="@item.CrsId">Delete</a></li>
+                                </ul>
+
+                            </td>
+            </tr>
+       }
+     
+       
+    </tbody>
+</table>
+        </div>
+    </div>
+</div>
+</div>
+@section JS{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <partial name="~/Views/Shared/Admin/_JSDataTable.cshtml" />
+
+}
+
+
+
